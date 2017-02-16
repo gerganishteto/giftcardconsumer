@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: oneplatform-sample-giftcardconsumer  
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        enabled: true
+        serviceId: ONEPLATFORM-SPRING-CONFIG
+      failFast: true
+  jackson:
+    time-zone: UTC
+     
+server:
+  port: ${port:8022}
+    
+eureka:
+  instance:
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+    hostname: ${application.host:localhost}
+    nonSecurePort: ${application.port:${server.port}}
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.urls:http://localhost:8761/eureka/}
+      
+stubrunner:
+    ids: org.oneplatform:oneplatform-sample-giftcard:+:stubs:8090
+    idsToServiceIds:
+      giftcard.service: oneplatform-sample-giftcard  

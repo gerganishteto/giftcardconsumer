@@ -1,0 +1,36 @@
+info:
+  app:
+    name: ${spring.application.name}
+    description:  '@application.description@'
+    version: '@application.version@'
+    group: '@application.group@'
+    gitCurrentBranch: '@application.current.branch@'
+    gitChangeSet: '@application.latest.revision@'
+    buildDate: '@application.timestamp@'
+    component: Oneplatform
+    category: Samples
+    restApi: true
+    usingDatabase: false
+  
+management:
+  context-path: /admin/manage
+  security:
+    enabled: false
+
+endpoints:
+  spring:
+    cloud:
+      bus:
+        env:
+          enabled: true
+        refresh:
+          enabled: true
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+
+  
