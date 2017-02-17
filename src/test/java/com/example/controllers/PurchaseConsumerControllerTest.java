@@ -1,9 +1,5 @@
 package com.example.controllers;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +13,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
@@ -37,17 +37,17 @@ public class PurchaseConsumerControllerTest {
   public void should_give_me_a_purchase_when_id_is_valid() throws Exception {
     mockMvc
         .perform(
-            get("/v1/purchases/{id}", "AaaAaAAa-7e3D-EDbA-BcAa-C5A7FEff6a8b")
+            get("/v1/purchases/{id}", "valid")
                 .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk()).andExpect(
-            jsonPath("$.id").value("AaaAaAAa-7e3D-EDbA-BcAa-C5A7FEff6a8b"));
+            jsonPath("$.id").value("valid"));
   }
 
   @Test
   public void should_return_notfound_when_id_is_invalid() throws Exception {
     mockMvc
         .perform(
-            get("/v1/purchases/{id}", "BBBBBBBB-ED42-11CE-BACD-00AA0057B223"))
+            get("/v1/purchases/{id}", "invalid"))
         .andExpect(status().isNotFound());
   }
  

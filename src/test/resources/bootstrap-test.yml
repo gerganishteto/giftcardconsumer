@@ -14,8 +14,6 @@ spring:
 stubrunner:
     ids: org.oneplatform:oneplatform-sample-giftcard
     repositoryRoot: classpath:m2repo/repository
-    idsToServiceIds:
-      oneplatform-sample-giftcard: oneplatform-sample-giftcard  
       
 
     
