@@ -25,8 +25,3 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${eureka.urls:http://localhost:8761/eureka/}
-      
-stubrunner:
-    ids: org.oneplatform:oneplatform-sample-giftcard:+:stubs:8090
-    idsToServiceIds:
-      giftcard.service: oneplatform-sample-giftcard  
