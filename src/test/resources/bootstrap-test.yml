@@ -6,15 +6,14 @@ spring:
       enabled: false
       discovery:
         enabled: false
-        serviceId: ONEPLATFORM-SPRING-CONFIG
+        serviceId: ONEPLATFORM-SPRING-CONFIG;
       failFast: true
   jackson:
     time-zone: UTC
 
 stubrunner:
-    ids: org.oneplatform:oneplatform-sample-giftcard
-    repositoryRoot: classpath:m2repo/repository
-      
+  idsToServiceIds:
+    oneplatform-sample-giftcard: oneplatform-sample-giftcard
 
     
 

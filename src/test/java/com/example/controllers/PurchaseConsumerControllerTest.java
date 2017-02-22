@@ -1,5 +1,9 @@
 package com.example.controllers;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +18,14 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {"server.port:0", "eureka.client.enabled:false"})
+//@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {"server.port:0", "eureka.client.enabled:false"})
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK, properties = {"server.port:0", "eureka.client.enabled:false"})
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
-@AutoConfigureStubRunner
+@AutoConfigureStubRunner(ids = "org.oneplatform:oneplatform-sample-giftcard:+:stubs:8090", 
+  repositoryRoot ="classpath:m2repo/repository")
 @DirtiesContext
 public class PurchaseConsumerControllerTest {
 

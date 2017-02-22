@@ -15,6 +15,7 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
 		classpath 'org.springframework.hateoas:spring-hateoas:0.23.0.RELEASE'
+		//classpath 'org.springframework:spring-aop:3.2.1.RELEASE'
 	}
 	
 }
@@ -37,22 +38,29 @@ dependencyManagement {
 	}
 }
 
+
 sourceCompatibility = 1.8
 
 dependencies {
-	compile('org.springframework.cloud:spring-cloud-starter-ribbon')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile ('org.springframework.cloud:spring-cloud-starter-eureka')
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile("org.springframework.cloud:spring-cloud-starter-eureka")
+	compile "org.springframework.retry:spring-retry"
+	
+	//compile('org.springframework.cloud:spring-cloud-starter-ribbon')
+	//compile('org.springframework.boot:spring-boot-starter-web')
+	//compile ('org.springframework.cloud:spring-cloud-starter-eureka')
 	compile ("io.springfox:springfox-swagger2:2.6.1")
 	compile ('io.springfox:springfox-swagger-ui:2.6.1')
-	compile("org.springframework.boot:spring-boot-starter-actuator")
+	//compile("org.springframework.boot:spring-boot-starter-actuator")
 	
-	testCompile "org.springframework.cloud:spring-cloud-contract-wiremock"
+	//testCompile "org.springframework.cloud:spring-cloud-contract-wiremock"
     testCompile "org.springframework.cloud:spring-cloud-starter-contract-stub-runner"
     testCompile("org.springframework.cloud:spring-cloud-stream-test-support")
 }
-repositories {
-    maven {
-        url 'https://repo.spring.io/libs-milestone'
-    }
+
+test {
+	testLogging {
+		exceptionFormat = 'full'
+	}
 }
