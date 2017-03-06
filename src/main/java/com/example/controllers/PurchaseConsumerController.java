@@ -60,7 +60,6 @@ public class PurchaseConsumerController {
             HttpStatus.NOT_FOUND);
       }
 
-      response.id = "valid";
       return new ResponseEntity<PurchaseResource>(response, HttpStatus.OK); 
 
     } catch (RestClientException ex) {

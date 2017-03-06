@@ -39,17 +39,16 @@ public class PurchaseConsumerControllerTest {
   public void should_give_me_a_purchase_when_id_is_valid() throws Exception {
     mockMvc
         .perform(
-            get("/v1/purchases/{id}", "valid")
+            get("/v1/purchases/{id}", "AaaAaAAa-7e3D-EDbA-BcAa-C5A7FEff6a8b")
                 .contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk()).andExpect(
-            jsonPath("$.id").value("valid"));
+        .andExpect(status().isOk());
   }
 
   @Test
   public void should_return_notfound_when_id_is_invalid() throws Exception {
     mockMvc
         .perform(
-            get("/v1/purchases/{id}", "invalid"))
+            get("/v1/purchases/{id}", "BbbBbBBb-7e3D-EDbA-BcAa-C5A7FEff6a8b"))
         .andExpect(status().isNotFound());
   }
  
