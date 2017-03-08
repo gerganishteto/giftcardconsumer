@@ -1,6 +1,7 @@
 package com.example.controllers;
 
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
@@ -44,7 +45,7 @@ public class PurchaseConsumerController {
 
   @RequestMapping(method = RequestMethod.GET, value = "/purchases/{id}", produces = APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<PurchaseResource> lookup(
-      @PathVariable("id") final String id) {
+      @PathVariable("id") final UUID id) {
 
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
